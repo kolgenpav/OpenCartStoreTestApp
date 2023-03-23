@@ -36,6 +36,8 @@ import java.util.Map;
  * The iMacPriceVerifyByCombinedLocators() is optimal.
  * <p>
  * You can test with Chrome or Firefox browser - choose in setClass() method
+ *
+ * @author Hennadii Kolomoiets
  */
 public class IMacPriceVerifyTest {
 
