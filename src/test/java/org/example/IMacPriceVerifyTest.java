@@ -4,7 +4,6 @@ package org.example;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,9 +14,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
 
 import java.time.Duration;
 import java.util.List;
@@ -26,7 +23,7 @@ import java.util.Map;
 /**
  * Prepare a test method with the following scenario.
  * <p>
- * 1. Go to https://demo.opencart.com/
+ * 1. Go to <a href="https://demo.opencart.com/">...</a>
  * 2. Select currency Euro.
  * 3. Click on the Desktops and Mac menu.
  * 4. Please check whether the product "iMac" at the price of 111.55 euros
@@ -48,15 +45,13 @@ public class IMacPriceVerifyTest {
 
     @BeforeAll
     public static void setClass() {
+        //Uncomment for Chrome
         WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
         //Uncomment for Firefox
 //        WebDriverManager.firefoxdriver().setup();
-        //Comment 3 operators for Firefox
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-        driver = new ChromeDriver(options);
-        //Uncomment for Firefox
 //        driver = new FirefoxDriver();
+
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICITLY_WAIT_SECONDS));
         driver.manage().window().maximize();
     }
