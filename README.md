@@ -49,5 +49,4 @@ The iMacPriceVerifyByCombinedLocators() is optimal.
 
 ### Info - Page-Object Approach Assignment:
 1. The PageObject model classes are located in the org.example.opencartpages package.
-2. In the ShoppingCartEmptyPage and HomePage constructors the verifying of the objects by its titles was organized.
-3. You can test with Chrome or Firefox browser - choose in setClass() method.
+2. You can test with Chrome or Firefox browser - choose in setClass() method.

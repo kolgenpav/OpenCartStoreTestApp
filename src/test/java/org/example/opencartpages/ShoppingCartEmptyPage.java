@@ -5,43 +5,69 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 /**
- * THe empty Shopping Cart page.
+ * The empty Shopping Cart page.
  *
  * @author Hennadii Kolomoiets
  */
 public class ShoppingCartEmptyPage extends TopPart {
-    private static final String shoppingCartTitle = "Shopping Cart";
+    public static final String EXPECTED_SHOPPING_CART_TITLE = "Shopping Cart";
+    public static final String EXPECTED_SHOPPING_CART_EMPTY_LABEL = "Your shopping cart is empty!";
     private static final String shoppingCartEmptyLabelLocator = "#content > p";
     private static final String continueButtonLocator = "#content > div > div > a";
 
-    private final WebElement shoppingCartEmptyLabel;
-    private final WebElement continueButton;
+    private WebElement shoppingCartLabel;
+    private WebElement shoppingCartEmptyLabel;
+    private WebElement continueButton;
 
     public ShoppingCartEmptyPage(WebDriver driver) {
         super(driver);
-        shoppingCartEmptyLabel = driver.findElement(By.cssSelector(shoppingCartEmptyLabelLocator));
-        continueButton = driver.findElement(By.cssSelector(continueButtonLocator));
-        if (!shoppingCartTitle.equals(driver.getTitle())) {
-            throw new IllegalStateException("This is not the Shopping Cart page");
-        }
+        initElements();
     }
 
-    /**
-     * Gets empty Shopping Cart label.
-     *
-     * @return empty Shopping Cart label: "Your shopping cart is empty!"
-     */
+    private void initElements() {
+        shoppingCartEmptyLabel = driver.findElement(By.cssSelector(shoppingCartEmptyLabelLocator));
+        continueButton = driver.findElement(By.cssSelector(continueButtonLocator));
+    }
+
+    // Page Object
+
+    // Shopping Cart label
+    public WebElement getShoppingCartLabel() {
+        return shoppingCartLabel;
+    }
+
+    public String getShoppingCartLabelText() {
+        return getShoppingCartLabel().getText();
+    }
+
+    // Shopping Cart empty label
     public WebElement getShoppingCartEmptyLabel() {
         return shoppingCartEmptyLabel;
     }
 
-    /**
-     * Click on the Continue button in Shopping Cart empty page.
-     *
-     * @return HomePage object
-     */
-    public HomePage continueButtonCLick() {
-        continueButton.click();
+    public String getShoppingCartEmptyLabelText() {
+        return getShoppingCartEmptyLabel().getText();
+    }
+
+    // Continue button
+    public WebElement getContinueButton() {
+        return continueButton;
+    }
+
+    public String getContinueButtonText() {
+        return getContinueButton().getText();
+    }
+
+    public void clickContinueButton() {
+        getContinueButton().click();
+    }
+
+    // Functional
+
+    // Business Logic
+
+    public HomePage leaveShoppingCart() {
+        clickContinueButton();
         return new HomePage(driver);
     }
 }

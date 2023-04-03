@@ -3,17 +3,25 @@ package org.example.opencartpages;
 import org.openqa.selenium.WebDriver;
 
 /**
- * The home page.
+ * The home page - dummy.
  *
  * @author Hennadii Kolomoiets
  */
 public class HomePage extends TopPart {
 
-    private static final String homePageTitle = "Your Store";
+    public static final String EXPECTED_HOMEPAGE_TITLE = "Your Store";
     public HomePage(WebDriver driver) {
         super(driver);
-        if (!homePageTitle.equals(driver.getTitle())) {
-            throw new IllegalStateException("This is not the Home page");
-        }
     }
+
+    // Page Object
+
+    public String getHomePageTitle() {
+        return driver.getTitle();
+    }
+
+    // Functional
+
+    // Business Logic
+
 }
